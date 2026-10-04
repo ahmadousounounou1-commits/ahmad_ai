@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block title %}AHMAD AI{% endblock %}</title>
+  <meta name="description" content="{% block description %}AHMAD AI : un assistant intelligent pour discuter, apprendre et créer.{% endblock %}">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+
+  <!-- Applique le thème AVANT l'affichage pour éviter un flash blanc en mode sombre -->
+  <script>
+    (function () {
+      try {
+        var choice = localStorage.getItem("ahmad_theme") || "system";
+        var dark = choice === "dark" ||
+          (choice === "system" && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+  <header class="navbar">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-logo">🧠</span> AHMAD AI</a>
+
+    <button id="nav-toggle" class="icon-btn nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+
+    <nav id="nav-links" class="nav-links" aria-label="Navigation principale">
+      <a href="{{ url_for('home') }}"     class="{{ 'active' if page == 'home' }}">Accueil</a>
+      <a href="{{ url_for('chat') }}"     class="{{ 'active' if page == 'chat' }}">Discuter</a>
+      <a href="{{ url_for('about') }}"    class="{{ 'active' if page == 'about' }}">À propos</a>
+      <a href="{{ url_for('contact') }}"  class="{{ 'active' if page == 'contact' }}">Contact</a>
+      <a href="{{ url_for('settings_page') }}" class="{{ 'active' if page == 'settings' }}">Paramètres</a>
+      <button id="theme-toggle" class="icon-btn" aria-label="Changer de thème (clair / sombre)" title="Changer de thème">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block footer %}
+  <footer class="footer">
+    <p>© {{ current_year }} AHMAD AI, créé par {{ creator_name }}.</p>
+    <p class="muted">Les réponses d'une IA peuvent contenir des erreurs : vérifie toujours les informations importantes.</p>
+  </footer>
+  {% endblock %}
+
+  <div id="toast-container" aria-live="polite"></div>
+
+  <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

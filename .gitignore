@@ -1,0 +1,9 @@
+# Secrets : ne JAMAIS envoyer ce fichier sur GitHub
+.env
+
+# Fichiers générés
+__pycache__/
+*.pyc
+venv/
+.venv/
+data/*.db

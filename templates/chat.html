@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Discuter : AHMAD AI{% endblock %}
+{% block body_class %}page-chat{% endblock %}
+
+{% block content %}
+<div class="chat-layout">
+
+  <!-- Colonne de gauche : historique -->
+  <aside id="sidebar" class="sidebar" aria-label="Historique des conversations">
+    <div class="sidebar-head">
+      <button id="new-chat-btn" class="btn btn-primary btn-block" type="button">＋ Nouvelle conversation</button>
+    </div>
+    <ul id="conversation-list" class="conversation-list"></ul>
+    <p id="history-empty" class="muted history-empty" hidden>Aucune conversation pour le moment.</p>
+  </aside>
+  <div id="overlay" class="overlay" hidden></div>
+
+  <!-- Zone principale -->
+  <section class="chat-main" aria-label="Discussion">
+    <div class="chat-topbar">
+      <button id="sidebar-toggle" class="btn btn-ghost btn-small" type="button" aria-label="Ouvrir l'historique">☰ Historique</button>
+      <button id="new-chat-top" class="btn btn-ghost btn-small" type="button">＋ Nouveau</button>
+    </div>
+
+    <div id="status-banner" class="status-banner" hidden></div>
+
+    <div id="messages" class="messages" aria-live="polite">
+      <div id="welcome" class="welcome">
+        <div class="welcome-logo">🧠</div>
+        <h1>Bonjour, je suis AHMAD AI</h1>
+        <p class="muted">Pose-moi une question pour commencer.</p>
+        <div class="chips">
+          <button class="chip" type="button">Explique-moi ce qu'est l'intelligence artificielle</button>
+          <button class="chip" type="button">Donne-moi 3 exercices de mathématiques niveau lycée</button>
+          <button class="chip" type="button">Souviens-toi que je prépare un examen d'informatique</button>
+          <button class="chip" type="button">Calcule 12 * (3 + 4)</button>
+        </div>
+      </div>
+    </div>
+
+    <form id="chat-form" class="composer" autocomplete="off">
+      <textarea id="message-input" rows="1" placeholder="Écris ton message…" aria-label="Ton message"></textarea>
+      <button id="send-btn" class="btn btn-primary send-btn" type="submit">Envoyer</button>
+    </form>
+  </section>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

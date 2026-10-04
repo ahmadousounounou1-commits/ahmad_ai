@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Paramètres : AHMAD AI{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container narrow">
+    <h1>Paramètres</h1>
+
+    <div class="card settings-block">
+      <h2>Apparence</h2>
+      <label for="theme-select">Thème</label>
+      <select id="theme-select">
+        <option value="system">Automatique (suit ton appareil)</option>
+        <option value="light">Clair</option>
+        <option value="dark">Sombre</option>
+      </select>
+      <p class="hint">Ce réglage est gardé dans ce navigateur.</p>
+    </div>
+
+    <div class="card settings-block">
+      <h2>Profil et réponses</h2>
+      <label for="display-name">Comment dois-je t'appeler ? (facultatif)</label>
+      <input id="display-name" type="text" maxlength="40" placeholder="Ex. Ali">
+
+      <label for="response-style">Longueur des réponses</label>
+      <select id="response-style">
+        <option value="short">Courtes</option>
+        <option value="normal">Équilibrées</option>
+        <option value="detailed">Détaillées</option>
+      </select>
+
+      <label for="custom-instructions">Instructions personnalisées (facultatif)</label>
+      <textarea id="custom-instructions" rows="3" maxlength="500"
+        placeholder="Ex. Explique-moi avec des exemples de la vie quotidienne. Corrige mes fautes de français."></textarea>
+      <p class="hint">Ces consignes sont ajoutées à chaque conversation (500 caractères maximum).</p>
+
+      <label class="checkbox">
+        <input id="memory-enabled" type="checkbox">
+        <span>Activer la mémoire (AHMAD AI utilise ce que tu lui demandes de retenir)</span>
+      </label>
+
+      <button id="save-settings" class="btn btn-primary" type="button">Enregistrer</button>
+    </div>
+
+    <div class="card settings-block">
+      <h2>Mémoire</h2>
+      <p class="hint">Tu peux aussi écrire « souviens-toi que… » dans le chat.</p>
+      <ul id="memory-list" class="memory-list"></ul>
+      <p id="memory-empty" class="muted" hidden>Aucun souvenir pour le moment.</p>
+
+      <div class="inline-form">
+        <input id="memory-input" type="text" maxlength="300" placeholder="Ex. Je prépare un examen d'informatique">
+        <button id="memory-add" class="btn btn-ghost" type="button">Ajouter</button>
+      </div>
+      <button id="memory-clear" class="btn btn-danger" type="button">Tout effacer</button>
+    </div>
+
+    <div class="card settings-block">
+      <h2>Mes données</h2>
+      <p class="hint">Supprime définitivement toutes tes conversations enregistrées sur ce serveur.</p>
+      <button id="delete-conversations" class="btn btn-danger" type="button">Supprimer toutes mes conversations</button>
+    </div>
+
+    <div class="card settings-block">
+      <h2>Informations techniques</h2>
+      <p id="tech-info" class="muted">Chargement…</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

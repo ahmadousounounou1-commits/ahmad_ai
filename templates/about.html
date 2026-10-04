@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}À propos : AHMAD AI{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container prose">
+    <h1>C'est quoi AHMAD AI ?</h1>
+    <p class="lead">
+      AHMAD AI est un assistant de discussion créé par {{ creator_name }}. Tu lui écris une question,
+      il te répond en français simple. Il peut aider à comprendre un cours, à programmer,
+      à s'entraîner avec des exercices ou à répondre à des questions générales.
+    </p>
+
+    <h2>Comment il fonctionne</h2>
+    <pre class="schema">Ton navigateur  ──►  Serveur AHMAD AI (Python)  ──►  Modèle d'IA
+ (page de chat)        │  base de données :            (API)
+                       │  historique, mémoire,
+                       ▼  paramètres
+                  Réponse affichée</pre>
+    <ol>
+      <li>Tu écris un message dans le navigateur.</li>
+      <li>Le serveur retrouve l'historique de la conversation et tes souvenirs.</li>
+      <li>Il envoie le tout à un modèle d'IA, avec des instructions claires.</li>
+      <li>La réponse revient, s'affiche, et la conversation est sauvegardée.</li>
+    </ol>
+
+    <h2>Deux modes de fonctionnement</h2>
+    <ul>
+      <li><strong>IA externe (via API)</strong> : de vraies conversations, grâce à un modèle de langage. Nécessite Internet et une clé API.</li>
+      <li><strong>Mode local</strong> : un petit assistant à règles, sans Internet, pour tester gratuitement. Il ne comprend que quelques sujets et <strong>n'est pas comparable à ChatGPT ou Claude</strong>.</li>
+    </ul>
+
+    <h2>La mémoire</h2>
+    <p>
+      AHMAD AI ne retient que ce que tu lui demandes explicitement, par exemple
+      « souviens-toi que je prépare un examen de mathématiques ». Tu peux voir, ajouter,
+      supprimer ou désactiver cette mémoire dans les <a href="{{ url_for('settings_page') }}">Paramètres</a>.
+    </p>
+
+    <h2>À savoir avant de l'utiliser</h2>
+    <ul>
+      <li><strong>Une IA peut se tromper.</strong> Elle peut inventer une information qui semble crédible (on appelle cela une « hallucination »). Vérifie les informations importantes.</li>
+      <li><strong>Une IA ne pense pas comme un humain.</strong> Elle produit du texte à partir de calculs sur de grandes quantités de données.</li>
+      <li><strong>Vie privée :</strong> en mode IA externe, tes messages sont envoyés au fournisseur du modèle pour obtenir une réponse. N'écris pas de mots de passe, de numéros de carte ou d'informations très personnelles.</li>
+      <li>Ton historique est lié à ce navigateur (par un cookie anonyme). Il n'y a pas encore de compte utilisateur.</li>
+    </ul>
+
+    <h2>Ce qui est prévu ensuite</h2>
+    <ul>
+      <li>Comptes utilisateurs pour retrouver son historique sur plusieurs appareils.</li>
+      <li>Génération et correction d'exercices scolaires par catégories.</li>
+      <li>Envoi de fichiers et d'images, lecture à voix haute.</li>
+    </ul>
+
+    <p><a class="btn btn-primary" href="{{ url_for('chat') }}">Essayer AHMAD AI</a></p>
+  </div>
+</section>
+{% endblock %}

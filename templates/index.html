@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}AHMAD AI : ton assistant intelligent{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="badge">Assistant intelligent en français</span>
+    <h1>Discute, apprends et crée avec <span class="gradient-text">AHMAD AI</span></h1>
+    <p class="lead">
+      Pose tes questions, fais expliquer un cours, demande des exercices ou de l'aide en programmation.
+      AHMAD AI te répond simplement, et retient ce que tu lui demandes de retenir.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="{{ url_for('chat') }}">Commencer à discuter</a>
+      <a class="btn btn-ghost btn-lg" href="{{ url_for('about') }}">Découvrir AHMAD AI</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Ce que tu peux faire</h2>
+    <div class="grid grid-3">
+      <article class="card">
+        <div class="card-icon">💬</div>
+        <h3>Discuter naturellement</h3>
+        <p>Écris ta question comme à un professeur ou à un ami. La conversation garde le fil.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">🧠</div>
+        <h3>Une mémoire simple</h3>
+        <p>Dis « souviens-toi que… » : l'information est gardée et utilisée dans tes prochaines conversations.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">🗂️</div>
+        <h3>Un historique complet</h3>
+        <p>Retrouve, rouvre ou supprime tes anciennes conversations quand tu veux.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">🌗</div>
+        <h3>Mode clair et sombre</h3>
+        <p>Choisis l'apparence qui te convient, ou laisse l'application suivre ton téléphone.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">📱</div>
+        <h3>Téléphone et ordinateur</h3>
+        <p>L'interface s'adapte à la taille de ton écran pour rester agréable partout.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Clé secrète protégée</h3>
+        <p>La clé de l'IA reste sur le serveur. Elle n'est jamais visible dans le navigateur.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Comment ça marche</h2>
+    <div class="grid grid-3">
+      <div class="step"><span class="step-number">1</span><h3>Tu écris</h3><p>Tu tapes ta question dans la zone de discussion.</p></div>
+      <div class="step"><span class="step-number">2</span><h3>Le serveur transmet</h3><p>Le serveur ajoute le contexte (historique, mémoire) et interroge l'IA.</p></div>
+      <div class="step"><span class="step-number">3</span><h3>Tu reçois la réponse</h3><p>La réponse s'affiche et la conversation est sauvegardée.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container cta">
+    <h2>Prêt à essayer ?</h2>
+    <p class="muted">Aucune inscription : ouvre le chat et pose ta première question.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('chat') }}">Ouvrir le chat</a>
+  </div>
+</section>
+{% endblock %}

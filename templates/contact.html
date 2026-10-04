@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Contact : AHMAD AI{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container narrow">
+    <h1>Contacter le créateur</h1>
+    <p class="lead">Une question, une idée d'amélioration, un problème ? Écris à {{ creator_name }}.</p>
+
+    {% if contact_email or contact_whatsapp %}
+    <div class="contact-links">
+      {% if contact_email %}
+        <a class="btn btn-ghost" href="mailto:{{ contact_email }}">✉️ {{ contact_email }}</a>
+      {% endif %}
+      {% if contact_whatsapp %}
+        <a class="btn btn-ghost" href="https://wa.me/{{ contact_whatsapp }}" target="_blank" rel="noopener">💬 WhatsApp</a>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <form id="contact-form" class="form card" novalidate>
+      <label for="c-name">Ton nom</label>
+      <input id="c-name" name="name" type="text" maxlength="80" autocomplete="name" required>
+
+      <label for="c-email">Ton adresse e-mail</label>
+      <input id="c-email" name="email" type="email" maxlength="120" autocomplete="email" required>
+
+      <label for="c-message">Ton message</label>
+      <textarea id="c-message" name="message" rows="6" maxlength="2000" required></textarea>
+
+      <!-- Champ piège : invisible pour les humains, rempli par les robots -->
+      <div class="hp" aria-hidden="true">
+        <label for="c-website">Ne pas remplir</label>
+        <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button id="contact-submit" class="btn btn-primary" type="submit">Envoyer le message</button>
+      <p id="contact-feedback" class="feedback" role="status"></p>
+    </form>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+{% endblock %}
